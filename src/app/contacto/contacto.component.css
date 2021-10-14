@@ -1,0 +1,13 @@
+.mat-table {
+    width: 100%;
+}
+.mat-table {
+    background: #f1efef;
+    width: 100%;
+}
+.avatar {
+    padding: 5px;
+    width: 70px;
+    height: 70px;
+    border-radius: 50px;
+}

@@ -138,6 +138,13 @@
         $('.menu-item').removeClass('active');
         $('.menu-item.contact').addClass('active');
     });
+    //On Click Open Contact Estudiantes
+    $(document).on('click','.contact-estu, .menu-item.estu', function() {
+        $('.content-estu').removeClass('showx');
+        $('.content-estu.estu').addClass('showx');
+        $('.menu-item').removeClass('active');
+        $('.menu-item.estu').addClass('active');
+    });
 
     //On Click Close Blocks
     $(document).on('click','#close', function() {

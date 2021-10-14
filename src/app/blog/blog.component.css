@@ -1,0 +1,16 @@
+.mat-table {
+    width: 100%;
+}
+.mat-table[_ngcontent-evk-c114] {
+    background: #f1efef;
+    width: 100%;
+}
+.avatar {
+    padding: 5px;
+    width: 70px;
+    height: 70px;
+    border-radius: 50px;
+}
+.example-spacer{
+    flex: 1 1 auto;
+}

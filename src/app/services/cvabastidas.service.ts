@@ -1,62 +1,41 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { House } from '../model/houseReport';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CvabastidasService {
-
-  profesional: any[] = [];
-  educacion: any[] = [];
-  testimonio: any[] = [];
-  experiencia: any[] = [];
-  blog: any[] = [];
+  url = 'http://hp-api.herokuapp.com/api/characters/house/'
+  personajes: any[] = [];
+  estudiantes: any[] = [];
+  profesores: any[] = [];
 
   constructor(private http: HttpClient) {
-    this.CargarProfesional();
-    this.CargarEducacion();
-    this.CargarTestimonio();
-    this.CargarExperiencia();
-    this.CargarBlog();
+    this.CargarPersonajes();
+    this.CargarEstudiantes();
+    this.CargarProfesores();
   }
 
-  private CargarProfesional(){
-    this.http.get('https://cv-tutorial-70504.firebaseio.com/Profesional.json')
-      .subscribe((resp: any[]) => {
-        this.profesional = resp;
-        console.log(resp);
-    });
+  
+  public CargarPersonajes(){
+    return this.http.get('http://hp-api.herokuapp.com/api/characters/house/Gryffindor')
   }
 
-  private CargarEducacion(){
-    this.http.get('https://cv-tutorial-70504.firebaseio.com/Educacion.json')
-      .subscribe((resp: any[]) => {
-        this.educacion = resp;
-        console.log(resp);
-    });
+
+  public CargarEstudiantes(){
+    return this.http.get('http://hp-api.herokuapp.com/api/characters/students')
+     
   }
 
-  private CargarTestimonio(){
-    this.http.get('https://cv-tutorial-70504.firebaseio.com/Testimonio.json')
-      .subscribe((resp: any[]) => {
-        this.testimonio = resp;
-        console.log(resp);
-    });
+  public CargarProfesores(){
+    return this.http.get('http://hp-api.herokuapp.com/api/characters/staff') 
   }
 
-  private CargarExperiencia(){
-    this.http.get('https://cv-tutorial-70504.firebaseio.com/Experiencia.json')
-      .subscribe((resp: any[]) => {
-        this.experiencia = resp;
-        console.log(resp);
-    });
-  }
+  getEstudiantes(house:string){
+    let header = new HttpHeaders().set('Type-content','aplication/json')
 
-  private CargarBlog(){
-    this.http.get('https://cv-tutorial-70504.firebaseio.com/Blog.json')
-      .subscribe((resp: any[]) => {
-        this.blog = resp;
-        console.log(resp);
-    });
-  }
+return this.http.get<House>(`${this.url}${house}`, {headers: header} );
+}
+
 }
